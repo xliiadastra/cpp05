@@ -75,3 +75,11 @@ const char	*Bureaucrat::GradeTooLowException::what(void) const throw()
 {
     return ("can no longer lower Bureaucracy grade.\n");
 }
+
+void    Bureaucrat::signForm(From& src)
+{
+    if (등급이 알 맞을 때)
+        std::cout << "<bureaucrat> signed <form>." << std::endl;
+    else
+        std::cout << "<bureaucrat> couldn’t sign <form> because <reason>." << std::endl;
+}

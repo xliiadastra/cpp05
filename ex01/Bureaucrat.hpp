@@ -5,6 +5,8 @@
 # include <string>
 # include <exception>
 
+class From;
+
 class Bureaucrat
 {
 private:
@@ -22,6 +24,7 @@ public:
     {
         virtual const char	*what(void) const throw();
     };
+
     Bureaucrat();
     Bureaucrat(const std::string name, int grade);
     Bureaucrat(const Bureaucrat& src);
@@ -33,6 +36,8 @@ public:
 	
     void    incrementGrade(void);
 	void    decrementGrade(void);
+
+    void    signForm(From& src);
 };
 
 std::ostream& operator<<(std::ostream& outputStream, const Bureaucrat &src);
