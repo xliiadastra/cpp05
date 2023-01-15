@@ -40,7 +40,9 @@ public:
     int                 getGradeSign(void) const;
     int                 getGradeExec(void) const;
 
-    virtual void    execute(Bureaucrat const & executor) = 0;
+    void    setSign(bool sign);
+
+    virtual int execute(Bureaucrat const & executor) = 0;
 };
 
 std::ostream& operator<<(std::ostream& outputStream, const AForm &src);

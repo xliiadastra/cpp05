@@ -11,7 +11,7 @@ class Bureaucrat
 {
 private:
     const std::string name;
-    int         grade;
+    int               grade;
     static const int highestGrade = 1;
     static const int lowestGrade = 150;
 
@@ -38,6 +38,7 @@ public:
 	void    decrementGrade(void);
 
     void    signForm(AForm& src);
+    void    executeForm(AForm const & form);
 };
 
 std::ostream& operator<<(std::ostream& outputStream, const Bureaucrat &src);

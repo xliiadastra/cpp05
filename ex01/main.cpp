@@ -18,7 +18,7 @@ int main( void )
 		c.signForm(fa);
 		c.signForm(fb);
 	}
-	catch(const std::exception &e) // why reference? to avoid copy cost and not to concern allocation and free
+	catch(const std::exception & e) // why reference? to avoid copy cost and not to concern allocation and free
 	{
 		std::cout << e.what();
 	}

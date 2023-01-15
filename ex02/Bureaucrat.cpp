@@ -26,7 +26,8 @@ Bureaucrat& Bureaucrat::operator=(const Bureaucrat& src)
     std::cout << "[Bureaucrat] Copy assignment operator called." << std::endl;
 
 //    *const_cast<std::string*>(&name) = src.getName();
-    this->grade = src.getGrade();
+    if (this != &src)
+        this->grade = src.getGrade();
     return (*this);
 }
 
@@ -89,4 +90,12 @@ void    Bureaucrat::signForm(AForm& src)
         std::cout << this->getName() << " couldn’t sign " << src.getName() \
                     << " because " << e.what();
     }
+}
+
+void    Bureaucrat::executeForm(AForm const & form)
+{
+	if (!form.execute(*this))
+		std::cout << this->getName() << " executed " << form.getName() << std::endl;
+	else
+		std::cout << this->getName() << " cannot execute " << form.getName() << std::endl;
 }

@@ -7,7 +7,7 @@ AForm::AForm() : _name("Scv"), _signed(false), _grade_sign(40), _grade_exec(20)
 }
 
 AForm::AForm(const std::string& name, int _grade_sign, int _grade_exec)
-: _name(name), _grade_sign(_grade_sign), _grade_exec(_grade_exec)
+: _name(name), _signed(false), _grade_sign(_grade_sign), _grade_exec(_grade_exec)
 {
     std::cout << "[AForm] constructor called." << std::endl;
     if (_grade_sign < highestGrade || _grade_exec < highestGrade)
@@ -27,7 +27,8 @@ AForm& AForm::operator=(const AForm& src)
 {
     std::cout << "[AForm] Copy assignment operator called\n";
 //	*const_cast<std::string*>(&_name) = src.getName();
-	_signed = src.getSign();
+	if (this != &src)
+        _signed = src.getSign();
 //	*const_cast<int*>(&_grade_sign) = src.getGradeSign();
 //	*const_cast<int*>(&_grade_exec) = src.getGradeExec();
 	return (*this);
@@ -40,6 +41,8 @@ AForm::~AForm()
 
 void    AForm::beSinged(Bureaucrat& src)
 {
+    if (this->_signed == true)
+        std::cout << "Already signed." << std::endl;
     if (src.getGrade() <= this->getGradeSign())
     {
         _signed = true;
@@ -67,6 +70,11 @@ int AForm::getGradeSign(void) const
 int AForm::getGradeExec(void) const
 {
     return (_grade_exec);
+}
+
+void    AForm::setSign(bool sign)
+{
+    this->_signed = sign;
 }
 
 std::ostream& operator<<(std::ostream& outputStream, const AForm& src)

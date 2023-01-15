@@ -24,7 +24,8 @@ Bureaucrat& Bureaucrat::operator=(const Bureaucrat& src)
 {
     std::cout << "[Bureaucrat] Copy assignment operator called." << std::endl;
 //    *const_cast<std::string*>(&name) = src.getName();
-    this->grade = src.getGrade();
+    if (this != &src)
+        this->grade = src.getGrade();
     return (*this);
 }
 
