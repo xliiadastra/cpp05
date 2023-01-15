@@ -1,22 +1,42 @@
 #include "Bureaucrat.hpp"
-#include "AForm.hpp"
+#include "ShrubberyCreationForm.hpp"
+#include "RobotomyRequestForm.hpp"
+#include "PresidentialPardonForm.hpp"
 
 int main( void )
 {
 	try
 	{
-		Bureaucrat a;
-		Bureaucrat b("Marin", 19);
-		Bureaucrat c("Mutal", 38);
-		Form fa("form_a", 20, 20);
-		Form fb("form_b", 40, 40);
+		Bureaucrat a("Marin", 1);
+		Bureaucrat b("Mutal", 19);
+		Bureaucrat c("Prove", 138);
+		ShrubberyCreationForm sa("ShrubberyA");
+		ShrubberyCreationForm sb("ShrubberyB");
+		RobotomyRequestForm ra("RobotA");
+		PresidentialPardonForm pa("PrisonerA");
+		PresidentialPardonForm pb("PrisonerB");
 
-		std::cout << a << b << c;
-		std::cout << fa << fb;
-		b.signForm(fa);
-		b.signForm(fb);
-		c.signForm(fa);
-		c.signForm(fb);
+		std::cout << sa << ra << pa;
+
+		std::cout << "----------------" << std::endl;
+		a.signForm(sa);
+		a.signForm(ra);
+		a.signForm(pa);
+
+		std::cout << "----------------" << std::endl;
+		b.executeForm(sa); // signed and executed
+		b.executeForm(sb); // not signed and not executed
+		c.executeForm(sa); // signed but not executed
+
+		std::cout << "----------------" << std::endl;
+		b.executeForm(ra); // signed and executed
+		b.executeForm(ra);
+		b.executeForm(ra);
+
+		std::cout << "----------------" << std::endl;
+		b.executeForm(pa); // signed but not executed
+		a.executeForm(pa); // signed and executed
+		a.executeForm(pb); // not signed and not executed
 	}
 	catch(const std::exception &e) // why reference? to avoid copy cost and not to concern allocation and free
 	{
