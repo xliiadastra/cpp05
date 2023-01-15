@@ -1,5 +1,5 @@
-#ifndef FROM_HPP
-# define FROM_HPP
+#ifndef FORM_HPP
+# define FORM_HPP
 
 # include <iostream>
 # include <string>
@@ -7,7 +7,7 @@
 
 class Bureaucrat;
 
-class From
+class Form
 {
 private:
     const std::string _name;
@@ -27,11 +27,11 @@ public:
         virtual const char	*what(void) const throw();
     };
 
-    From();
-    From(const std::string& name, int _grade_sign, int _grade_exec);
-    From(const From& src);
-    From&   operator=(const From& src);
-    ~From();
+    Form();
+    Form(const std::string& name, int _grade_sign, int _grade_exec);
+    Form(const Form& src);
+    Form&   operator=(const Form& src);
+    ~Form();
 
     void    beSinged(Bureaucrat& src);
 
@@ -41,6 +41,6 @@ public:
     int                 getGradeExec(void) const;
 };
 
-std::ostream& operator<<(std::ostream& outputStream, const Bureaucrat &src);
+std::ostream& operator<<(std::ostream& outputStream, const Form &src);
 
 #endif

@@ -5,12 +5,12 @@
 # include <string>
 # include <exception>
 
-class From;
+class Form;
 
 class Bureaucrat
 {
 private:
-    std::string name;
+    const std::string name;
     int         grade;
     static const int highestGrade = 1;
     static const int lowestGrade = 150;
@@ -37,7 +37,7 @@ public:
     void    incrementGrade(void);
 	void    decrementGrade(void);
 
-    void    signForm(From& src);
+    void    signForm(Form& src);
 };
 
 std::ostream& operator<<(std::ostream& outputStream, const Bureaucrat &src);

@@ -6,11 +6,11 @@ CFLAGS		= -Wall -Wextra -Werror -std=c++98
 RM		= rm
 RMFLAGS		= -f
 
-INCLUDE		= ./Bureaucrat.hpp ./Form.hpp
+INCLUDE		= ./Bureaucrat.hpp ./From.hpp
 
 SRCS 		= main.cpp	\
 			  Bureaucrat.cpp	\
-			  Form.cpp
+			  From.cpp
 
 OBJS		= $(SRCS:%.cpp=%.o)
 

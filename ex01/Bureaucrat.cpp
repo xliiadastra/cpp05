@@ -1,4 +1,5 @@
 #include "Bureaucrat.hpp"
+#include "Form.hpp"
 
 Bureaucrat::Bureaucrat() : name("Scv"), grade(75)
 {
@@ -24,7 +25,7 @@ Bureaucrat& Bureaucrat::operator=(const Bureaucrat& src)
 {
     std::cout << "[Bureaucrat] Copy assignment operator called." << std::endl;
 
-    *const_cast<std::string*>(&name) = src.getName();
+//    *const_cast<std::string*>(&name) = src.getName();
     this->grade = src.getGrade();
     return (*this);
 }
@@ -52,7 +53,7 @@ int Bureaucrat::getGrade(void) const
 
 void Bureaucrat::incrementGrade(void)
 {
-	std::cout << this->getName() << " is increasing grade From " << getGrade() << std::endl;
+	std::cout << this->getName() << " is increasing grade Form " << getGrade() << std::endl;
     grade--;
     if (this->grade < highestGrade)
         throw (GradeTooHighException());
@@ -60,7 +61,7 @@ void Bureaucrat::incrementGrade(void)
 
 void Bureaucrat::decrementGrade(void)
 {
-	std::cout << this->getName() << " is decreasing grade From " << getGrade() << std::endl;
+	std::cout << this->getName() << " is decreasing grade Form " << getGrade() << std::endl;
     grade++;
     if (this->grade > lowestGrade)
         throw (GradeTooLowException());
@@ -76,10 +77,16 @@ const char	*Bureaucrat::GradeTooLowException::what(void) const throw()
     return ("can no longer lower Bureaucracy grade.\n");
 }
 
-void    Bureaucrat::signForm(From& src)
+void    Bureaucrat::signForm(Form& src)
 {
-    if (등급이 알 맞을 때)
-        std::cout << "<bureaucrat> signed <form>." << std::endl;
-    else
-        std::cout << "<bureaucrat> couldn’t sign <form> because <reason>." << std::endl;
+    try
+    {
+        src.beSinged(*this);
+        std::cout << this->getName() << " signed " << src.getName() << std::endl;
+    }
+    catch (const std::exception & e)
+    {
+        std::cout << this->getName() << " couldn’t sign " << src.getName() \
+                    << " because " << e.what();
+    }
 }
