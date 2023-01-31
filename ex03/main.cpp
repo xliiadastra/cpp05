@@ -13,8 +13,8 @@ int main(void)
 {
 	atexit(check_leak);
 	Intern someRandomIntern;
-	Bureaucrat a("Master", 1);
-	Bureaucrat b("Kane", 19);
+	Bureaucrat a("Marin", 1);
+	Bureaucrat b("Mutal", 19);
 	AForm *sa;
 	AForm *ra;
 	AForm *pa;

@@ -15,8 +15,12 @@ int main( void )
 		std::cout << fa << fb;
 		b.signForm(fa);
 		b.signForm(fb);
+		std::cout << fa << fb;
+
 		c.signForm(fa);
 		c.signForm(fb);
+		std::cout << fa << fb;
+		
 	}
 	catch(const std::exception & e) // why reference? to avoid copy cost and not to concern allocation and free
 	{

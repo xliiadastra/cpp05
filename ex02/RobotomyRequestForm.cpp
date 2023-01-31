@@ -1,21 +1,23 @@
 #include "RobotomyRequestForm.hpp"
 #include "Bureaucrat.hpp"
+#include <cstdlib>
+#include <ctime>
 
-RobotomyRequestForm::RobotomyRequestForm() : AForm("RForm", _grade_sign, _grade_exec)
+RobotomyRequestForm::RobotomyRequestForm() : AForm("RForm", 72, 45)
 {
 //	std::cout << "[RobotomyRequestForm] Default constructor called" << std::endl;
 }
 
-RobotomyRequestForm::RobotomyRequestForm(const std::string& name) : AForm(name, _grade_sign, _grade_exec)
+RobotomyRequestForm::RobotomyRequestForm(const std::string& name) : AForm(name, 72, 45)
 {
 //	std::cout << "[RobotomyRequestForm] constructor called" << std::endl;
 }
 
 RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm& src)
-: AForm(src.getName(), _grade_sign, _grade_exec)
+: AForm(src)
 {
 //	std::cout << "[RobotomyRequestForm] Copy constructor called" << std::endl;
-    *this = src;
+//    *this = src;
 }
 
 RobotomyRequestForm& RobotomyRequestForm::operator=(const RobotomyRequestForm& src)
@@ -33,10 +35,11 @@ RobotomyRequestForm::~RobotomyRequestForm()
 
 int RobotomyRequestForm::execute(Bureaucrat const & executor) const
 {
-	std::random_device rd; // 난수 생성
-	std::mt19937 gen(rd()); // 난수 엔진
-	std::uniform_int_distribution<int> dis(0, 1);
+	// std::random_device rd; // 난수 생성
+	// std::mt19937 gen(rd()); // 난수 엔진
+	// std::uniform_int_distribution<int> dis(0, 1);
 
+	srand(time(0));
 	if (!getSign())
 	{
 		std::cout << "Form "<< getName() <<" is not signed so cannot be executed.\n";
@@ -48,7 +51,7 @@ int RobotomyRequestForm::execute(Bureaucrat const & executor) const
 	else
 	{
 		std::cout << "[Drilling noises]\n" << getName();
-		if (dis(gen))
+		if (rand() % 2 == 0)
 			std::cout << " has been robotomized successfully\n";
 		else
 			std::cout << " robotomized has been failed\n";

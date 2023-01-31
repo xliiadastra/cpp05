@@ -1,21 +1,21 @@
 #include "PresidentialPardonForm.hpp"
 #include "Bureaucrat.hpp"
 
-PresidentialPardonForm::PresidentialPardonForm() : AForm("PForm", _grade_sign, _grade_exec)
+PresidentialPardonForm::PresidentialPardonForm() : AForm("PForm", 25, 5)
 {
 //	std::cout << "[PresidentialPardonForm] Default constructor called" << std::endl;
 }
 
-PresidentialPardonForm::PresidentialPardonForm(const std::string& name) : AForm(name, _grade_sign, _grade_exec)
+PresidentialPardonForm::PresidentialPardonForm(const std::string& name) : AForm(name, 25, 5)
 {
 //	std::cout << "[PresidentialPardonForm] constructor called" << std::endl;
 }
 
 PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm& src)
-: AForm(src.getName(), _grade_sign, _grade_exec)
+: AForm(src)
 {
 //	std::cout << "[PresidentialPardonForm] Copy constructor called" << std::endl;
-    *this = src;
+//    *this = src;
 }
 
 PresidentialPardonForm& PresidentialPardonForm::operator=(const PresidentialPardonForm& src)

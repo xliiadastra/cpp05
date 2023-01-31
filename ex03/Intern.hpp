@@ -7,9 +7,11 @@
 # include <iostream>
 # include <string>
 
-class Intern {
+class Intern
+{
 public:
-	class NoFormExistException : public std::exception{
+	class NoFormExistException : public std::exception
+	{
 	public:
 		const char *what() const throw();
 	};

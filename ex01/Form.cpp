@@ -20,7 +20,7 @@ Form::Form(const Form& src)
 : _name(src.getName()), _signed(src.getSign()), _grade_sign(src.getGradeSign()), _grade_exec(src.getGradeExec())
 {
     std::cout << "[Form] Copy constructor called." << std::endl;
-    *this = src;
+//    *this = src;
 }
 
 Form& Form::operator=(const Form& src)

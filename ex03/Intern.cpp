@@ -3,13 +3,13 @@
 AForm *Intern::makeForm(std::string const &name, std::string const &target) const
 {
 	std::string	formlist[3] = {"shrubbery creation", "robotomy request", "presidential pardon"};
-	std::string	*indexptr;
-	int 		index;
+	int 		index = 0;
 
-	indexptr = find(formlist, formlist + 3, name);
-	index = indexptr - formlist;
+	for (; formlist[index].compare(name) && index < 3; ++index) ;
 	try
 	{
+		if (index < 3 && index >= 0)
+			std::cout << "Intern creates " << name << std::endl;
 		switch (index)
 		{
 			case 0:
@@ -21,10 +21,11 @@ AForm *Intern::makeForm(std::string const &name, std::string const &target) cons
 		}
 		throw NoFormExistException();
 	}
-	catch(const std::exception &e) {
+	catch(const std::exception &e)
+	{
 		std::cout << e.what();
 	}
-	return (nullptr);
+	return (NULL);
 }
 
 Intern::Intern()

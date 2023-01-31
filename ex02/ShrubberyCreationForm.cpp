@@ -1,21 +1,20 @@
 #include "ShrubberyCreationForm.hpp"
 #include "Bureaucrat.hpp"
 
-ShrubberyCreationForm::ShrubberyCreationForm() : AForm("SForm", _grade_sign, _grade_exec)
+ShrubberyCreationForm::ShrubberyCreationForm() : AForm("SForm", 145, 137)
 {
 //	std::cout << "[ShrubberyCreationForm] Default constructor called" << std::endl;
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(const std::string& name) : AForm(name, _grade_sign, _grade_exec)
+ShrubberyCreationForm::ShrubberyCreationForm(const std::string& name) : AForm(name, 145, 137)
 {
 //	std::cout << "[ShrubberyCreationForm] constructor called" << std::endl;
 }
 
 ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& src)
-: AForm(src.getName(), _grade_sign, _grade_exec)
+: AForm(src)
 {
 //	std::cout << "[ShrubberyCreationForm] Copy constructor called" << std::endl;
-    *this = src;
 }
 
 ShrubberyCreationForm& ShrubberyCreationForm::operator=(const ShrubberyCreationForm& src)
@@ -44,7 +43,7 @@ int ShrubberyCreationForm::execute(Bureaucrat const & executor) const
 	else
 	{
 		std::ofstream ofs;
-		ofs.open(getName());
+		ofs.open(getName() + "_shrubbery");
 		if (ofs.fail())
 		{
 			std::cout << "File create error\n";

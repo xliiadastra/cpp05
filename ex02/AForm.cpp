@@ -20,7 +20,7 @@ AForm::AForm(const AForm& src)
 : _name(src._name), _signed(src._signed), _grade_sign(src._grade_sign), _grade_exec(src._grade_exec)
 {
 //    std::cout << "[AForm] Copy constructor called." << std::endl;
-    *this = src;
+//    *this = src;
 }
 
 AForm& AForm::operator=(const AForm& src)

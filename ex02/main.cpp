@@ -30,8 +30,8 @@ int main( void )
 
 		std::cout << "----------------" << std::endl;
 		b.executeForm(ra); // signed and executed
-		b.executeForm(ra);
-		b.executeForm(ra);
+		// b.executeForm(ra);
+		// b.executeForm(ra);
 
 		std::cout << "----------------" << std::endl;
 		b.executeForm(pa); // signed but not executed
